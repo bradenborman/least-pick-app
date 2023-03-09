@@ -11,7 +11,7 @@ class HowToPlayPage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Text(
               'How to Score Points',
               style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
@@ -43,7 +43,7 @@ class HowToPlayPage extends StatelessWidget {
             ),
             SizedBox(height: 8.0),
             Text(
-              '• If you are in the winning group, you will get one point accumlated to your score.',
+              '• If you are in the winning group, you will get one point accumulated to your score.',
               style: TextStyle(fontSize: 18.0),
             ),
             SizedBox(height: 8.0),

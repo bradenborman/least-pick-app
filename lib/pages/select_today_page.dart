@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:least_picked/pages/select_options.dart';
 
 class SelectTodayPage extends StatelessWidget {
   @override
@@ -7,11 +8,9 @@ class SelectTodayPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Select Today'),
       ),
-      body: Center(
-        child: Text(
-          'This is the Select Today page',
-          style: TextStyle(fontSize: 24),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SelectOptionWidget(),
       ),
     );
   }
