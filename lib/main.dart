@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:least_picked/pages/how_to_play_page.dart';
+import 'package:least_picked/pages/howtoplay/how_to_play_page.dart';
+import 'package:least_picked/pages/leaderboard/leaderboard_page.dart';
 import 'package:least_picked/pages/select_today_page.dart';
 
 void main() => runApp(MyApp());
@@ -57,11 +58,25 @@ class LandingPage extends StatelessWidget {
                 padding: EdgeInsets.all(16),
               ),
             ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LeaderboardPage()),
+                );
+              },
+              child: Text(
+                'Leaderboard',
+                style: TextStyle(fontSize: 24),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(16),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
