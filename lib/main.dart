@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:least_picked/pages/howtoplay/how_to_play_page.dart';
-import 'package:least_picked/pages/leaderboard/leaderboard_page.dart';
-import 'package:least_picked/pages/select_today_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:least_picked/pages/landing_page.dart';
+import 'package:least_picked/utilities/leaderboardDataUtility.dart';
 
-void main() => runApp(MyApp());
+/*
+  Run in terminal with >>flutter run --dart-define=FLAVOR=dev
+ */
+
+Future<void> main() async {
+  //Load in the properties
+  String envFile = '.env.${String.fromEnvironment('FLAVOR', defaultValue: 'dev')}';
+  await dotenv.load(fileName: envFile);
+  LeaderboardData.sortDataByScore();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -11,72 +22,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Least Picked',
       home: LandingPage(),
-    );
-  }
-}
-
-class LandingPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue[200],
-      appBar: AppBar(
-        title: Text('Least Picked'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HowToPlayPage()),
-                );
-              },
-              child: Text(
-                'How To Play',
-                style: TextStyle(fontSize: 24),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(16),
-              ),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SelectTodayPage()),
-                );
-              },
-              child: Text(
-                'Select Today',
-                style: TextStyle(fontSize: 24),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(16),
-              ),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LeaderboardPage()),
-                );
-              },
-              child: Text(
-                'Leaderboard',
-                style: TextStyle(fontSize: 24),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(16),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

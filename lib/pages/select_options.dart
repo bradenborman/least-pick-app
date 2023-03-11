@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+class SelectOptionWidget extends StatelessWidget {
+  final int selectedOption;
+  final ValueChanged<int> onOptionSelected;
 
-class SelectOptionWidget extends StatefulWidget {
-  @override
-  _SelectOptionWidgetState createState() => _SelectOptionWidgetState();
-}
-
-class _SelectOptionWidgetState extends State<SelectOptionWidget> {
-  int _selectedOption = 1;
+  const SelectOptionWidget({
+    Key? key,
+    required this.selectedOption,
+    required this.onOptionSelected,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,32 +17,20 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
       children: [
         OptionButton(
           label: 'Option 1',
-          isSelected: _selectedOption == 1,
-          onTap: () {
-            setState(() {
-              _selectedOption = 1;
-            });
-          },
+          isSelected: selectedOption == 1,
+          onTap: () => onOptionSelected(1),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         OptionButton(
           label: 'Option 2',
-          isSelected: _selectedOption == 2,
-          onTap: () {
-            setState(() {
-              _selectedOption = 2;
-            });
-          },
+          isSelected: selectedOption == 2,
+          onTap: () => onOptionSelected(2),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         OptionButton(
           label: 'Option 3',
-          isSelected: _selectedOption == 3,
-          onTap: () {
-            setState(() {
-              _selectedOption = 3;
-            });
-          },
+          isSelected: selectedOption == 3,
+          onTap: () => onOptionSelected(3),
         ),
       ],
     );
@@ -74,7 +63,7 @@ class OptionButton extends StatelessWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               color: Colors.white,
               fontWeight: FontWeight.bold,
